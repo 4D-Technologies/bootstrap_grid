@@ -1,0 +1,22 @@
+name: bootstrap_grid
+description: Bootstrap Grid Implementation
+version: 1.0.0
+homepage: www.cadlearning.com
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  effective_dart: ^1.3.2
+  flutter_test:
+    sdk: flutter
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
