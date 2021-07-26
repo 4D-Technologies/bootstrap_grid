@@ -1,7 +1,8 @@
 name: bootstrap_grid
 description: Bootstrap Grid Implementation
-version: 1.0.0
-homepage: www.cadlearning.com
+version: 1.0.1
+homepage: https://github.com/Concerti-IO/bootstrap_grid
+publish_to: https://pub.dev/bootstrap_grid
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
