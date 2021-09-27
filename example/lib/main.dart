@@ -30,11 +30,119 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
         appBar: AppBar(
           title: Text(widget.title!),
+          bottom: const TabBar(tabs: [
+            Tab(
+              text: "Grid List",
+              icon: Icon(Icons.table_chart),
+            ),
+            Tab(
+              text: "Row",
+              icon: Icon(Icons.table_rows),
+            ),
+          ]),
         ),
-        body: _buildGridList());
+        body: TabBarView(
+          children: [
+            _buildGridList(),
+            _buildRow(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRow() {
+    return Column(children: [
+      BootstrapRow(
+        horizontalSpacing: 5,
+        runSpacing: 5,
+        itemHeight: 150,
+        children: [
+          BootstrapCol(
+            xs: 12,
+            md: 8,
+            lg: 6,
+            xl: 4,
+            xxl: 2,
+            child: Container(
+              color: Colors.blue.shade50,
+              child: Text("Row 1, Col 1"),
+            ),
+          ),
+          BootstrapCol(
+            xs: 12,
+            md: 4,
+            lg: 6,
+            xl: 4,
+            xxl: 3,
+            child: Container(
+              color: Colors.red.shade50,
+              child: Text("Row 1, Col 2"),
+            ),
+          ),
+          BootstrapCol(
+            xs: 12,
+            md: 8,
+            lg: 6,
+            xl: 4,
+            xxl: 6,
+            child: Container(
+              color: Colors.green.shade50,
+              child: Text("Row 1, Col 3"),
+            ),
+          ),
+        ],
+      ),
+      Divider(
+        color: Colors.purple,
+        height: 10,
+        thickness: 3,
+      ),
+      BootstrapRow(
+          horizontalSpacing: 5,
+          runSpacing: 5,
+          itemHeight: 100,
+          children: [
+            BootstrapCol(
+              xs: 12,
+              md: 4,
+              lg: 6,
+              xl: 4,
+              xxl: 4,
+              child: Container(
+                color: Colors.blue.shade200,
+                child: Text("Row 2, Col 1"),
+              ),
+            ),
+            BootstrapCol(
+              xs: 12,
+              md: 4,
+              lg: 6,
+              xl: 4,
+              xxl: 3,
+              child: Container(
+                color: Colors.red.shade200,
+                child: Text("Row 2, Col 2"),
+              ),
+            ),
+            BootstrapCol(
+              xs: 12,
+              md: 4,
+              lg: 6,
+              xl: 4,
+              xxl: 5,
+              child: Container(
+                color: Colors.green.shade200,
+                child: Text("Row 2, Col 3"),
+              ),
+            ),
+          ]),
+    ]);
   }
 
   Widget _buildGridList() {
