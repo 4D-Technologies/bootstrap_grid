@@ -1,3 +1,8 @@
+## [1.0.3] - April 19th, 2022
+
+- Update github repro link
+- Update Flutter and dart requirements
+
 ## [1.0.2] - September 27, 2021
 
 - Rebuild BootstrapRow using Wrap
