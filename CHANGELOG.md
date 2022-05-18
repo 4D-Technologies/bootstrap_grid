@@ -1,3 +1,7 @@
+## [1.0.4] - May 17th, 2022
+
+- Update to Flutter 3.0
+
 ## [1.0.3] - April 19th, 2022
 
 - Update github repro link

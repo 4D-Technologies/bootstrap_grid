@@ -116,9 +116,10 @@ class _BootstrapListItem extends StatelessWidget {
       {this.itemWidth,
       this.spacing,
       this.squareCells,
-      this.itemHeight,
+      double? itemHeight,
       this.children,
-      this.mainAxisAlignment = MainAxisAlignment.start});
+      this.mainAxisAlignment = MainAxisAlignment.start})
+      : this.itemHeight = itemHeight ?? itemWidth;
 
   @override
   Widget build(BuildContext context) {

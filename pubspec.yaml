@@ -1,18 +1,18 @@
 name: bootstrap_grid
 description: Bootstrap Grid Implementation
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/4D-Technologies/bootstrap_grid
 
 environment:
-  sdk: ">=2.16.0 <3.0.0"
-  flutter: ">=2.10.0"
+  sdk: ">=2.17.0 <3.0.0"
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  flutter_lints: ^1.0.4
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
 
