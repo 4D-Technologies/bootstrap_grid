@@ -1,3 +1,9 @@
+# Change Log
+
+## [1.0.5] - Dec 10th, 2024
+
+- Add flutter_adaptive_scaffold functionality for breakpoints and consistency.
+
 ## [1.0.4] - May 17th, 2022
 
 - Update to Flutter 3.0
