@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.0.6] - Sep 3rd, 2026
+
+- Remove the `flutter_adaptive_scaffold` dependency.
+- Use local Bootstrap width breakpoints (576, 768, 992, 1200, 1600).
+- Document the grid tiers in the README.
+- Add widget tests for breakpoint selection and column-span fallback.
+
 ## [1.0.5] - Dec 10th, 2024
 
 - Add flutter_adaptive_scaffold functionality for breakpoints and consistency.

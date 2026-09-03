@@ -1,7 +1,6 @@
-library bootstrap_grid;
+library;
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
 
 part 'src/row.dart';
 part 'src/column.dart';
@@ -9,27 +8,32 @@ part 'src/list.dart';
 
 enum _GridTier { xs, sm, md, lg, xl, xxl }
 
-_GridTier _currentTier(BuildContext context) {
-  MediaQueryData mediaQueryData = MediaQuery.of(context);
-  double width = mediaQueryData.size.width;
+/// Bootstrap-style minimum widths for each grid tier, in logical pixels.
+///
+/// Flutter does not ship a first-party window-size-class API, so these values
+/// live in this package instead of pulling in `flutter_adaptive_scaffold`.
+abstract final class _Breakpoints {
+  static const double sm = 576;
+  static const double md = 768;
+  static const double lg = 992;
+  static const double xl = 1200;
+  static const double xxl = 1600;
+}
 
-  if (width < (Breakpoints.small.beginWidth ?? 576)) {
+_GridTier _currentTier(BuildContext context) {
+  final double width = MediaQuery.of(context).size.width;
+
+  if (width < _Breakpoints.sm) {
     return _GridTier.xs;
-  } else if (width < (Breakpoints.medium.beginWidth ?? 768)) {
+  } else if (width < _Breakpoints.md) {
     return _GridTier.sm;
-  } else if (width < (Breakpoints.mediumLarge.beginWidth ?? 992)) {
+  } else if (width < _Breakpoints.lg) {
     return _GridTier.md;
-  } else if (width < (Breakpoints.large.beginWidth ?? 1200)) {
+  } else if (width < _Breakpoints.xl) {
     return _GridTier.lg;
-  } else if (width < (Breakpoints.extraLarge.beginWidth ?? 1600)) {
+  } else if (width < _Breakpoints.xxl) {
     return _GridTier.xl;
   } else {
     return _GridTier.xxl;
   }
 }
-
-//
-// responsive grid list
-//
-
-

@@ -1,4 +1,4 @@
-part of bootstrap_grid;
+part of '../bootstrap_grid.dart';
 
 class BootstrapCol {
   final int xs;
@@ -21,7 +21,7 @@ class BootstrapCol {
     required this.child,
   });
 
-  int getSegments(_GridTier tier) {
+  int _getSegments(_GridTier tier) {
     switch (tier) {
       case _GridTier.xs:
         return xs;

@@ -2,7 +2,24 @@
 
 Responsive Grid Layout and List for Flutter - Forked and improved
 
-### Responsive Grid Layout
+This package has no third-party layout dependencies. Grid tiers use Bootstrap-style width breakpoints from `MediaQuery`.
+
+## Breakpoints
+
+`BootstrapCol` spans are selected from the current window width:
+
+| Tier | Minimum width |
+| --- | --- |
+| `xs` | `< 576` |
+| `sm` | `≥ 576` |
+| `md` | `≥ 768` |
+| `lg` | `≥ 992` |
+| `xl` | `≥ 1200` |
+| `xxl` | `≥ 1600` |
+
+Unset larger tiers fall back to the next smaller defined span.
+
+## Responsive Grid Layout
 
 With `BootstrapRow` and `BootstrapCol` you can get the same behavior of [bootstrap](https://getbootstrap.com) Grid System
 
@@ -66,12 +83,12 @@ Give every col the width it shall occupy at every size category assuming the tot
 
 <img src="https://raw.githubusercontent.com/mohamed-selim-a/ResponsiveGrid_Flutter/master/images/1.jpg" width="300"> <img src="https://raw.githubusercontent.com/mohamed-selim-a/ResponsiveGrid_Flutter/master/images/2.jpg" height="300">
 
-### Responsive Grid List
+## Responsive Grid List
 
-`ResponsiveGridList` works differently in that you only specify a desired width for the items and spacing, and it will decide how many items shall fit in a line, and the width of the item and spacing will change (only small change) to fill the entire width
+`BootstrapList` works differently in that you only specify a desired width for the items and spacing, and it will decide how many items shall fit in a line, and the width of the item and spacing will change (only small change) to fill the entire width
 
 ```dart
-    ResponsiveGridList(
+    BootstrapList(
         desiredItemWidth: 100,
         minSpacing: 10,
         children: [

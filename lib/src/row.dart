@@ -1,4 +1,4 @@
-part of bootstrap_grid;
+part of '../bootstrap_grid.dart';
 
 class BootstrapRow extends StatelessWidget {
   final List<BootstrapCol> children;
@@ -15,7 +15,8 @@ class BootstrapRow extends StatelessWidget {
   final WrapAlignment alignment;
   final WrapAlignment runAlignment;
 
-  BootstrapRow({
+  const BootstrapRow({
+    super.key,
     required this.children,
     this.crossAxisAlignment = WrapCrossAlignment.start,
     this.totalSegments = 12,
@@ -47,7 +48,7 @@ class BootstrapRow extends StatelessWidget {
           alignment: alignment,
           runAlignment: runAlignment,
           children: children.map((c) {
-            final segments = c.getSegments(tier);
+            final segments = c._getSegments(tier);
 
             final width = (segmentSize * segments.toDouble()) -
                 ((children.length - 2).toDouble() * horizontalSpacing);
