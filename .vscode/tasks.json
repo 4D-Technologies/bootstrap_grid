@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "publish",
+			"type": "shell",
+			"command": "dart pub publish --force --ignore-warnings"
+		},
+		{
+			"label": "publish-force",
+			"type": "shell",
+			"command": "dart pub lish --force"
+		}
+	]
+}
