@@ -19,7 +19,10 @@ class BootstrapList extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (children!.isEmpty) return Container();
+        final List<Widget>? items = children;
+        if (items == null || items.isEmpty) {
+          return const SizedBox.shrink();
+        }
 
         double width = constraints.maxWidth;
 
@@ -47,21 +50,18 @@ class BootstrapList extends StatelessWidget {
 
         if (scroll) {
           return ListView.builder(
-              itemCount: (children!.length / n).ceil() * 2 - 1,
+              itemCount: (items.length / n).ceil() * 2 - 1,
               itemBuilder: (context, index) {
-                //if (index * n >= children.length) return null;
-                //separator
                 if (index % 2 == 1) {
                   return SizedBox(
                     height: minSpacing,
                   );
                 }
-                //item
                 var rowChildren = List<Widget>.empty(growable: true);
                 index = index ~/ 2;
                 for (int i = index * n; i < (index + 1) * n; i++) {
-                  if (i >= children!.length) break;
-                  rowChildren.add(children![i]);
+                  if (i >= items.length) break;
+                  rowChildren.add(items[i]);
                 }
                 return _BootstrapListItem(
                   mainAxisAlignment: rowMainAxisAlignment,
@@ -76,13 +76,11 @@ class BootstrapList extends StatelessWidget {
           rows.add(SizedBox(
             height: minSpacing,
           ));
-          //
-          for (int j = 0; j < (children!.length / n).ceil(); j++) {
+          for (int j = 0; j < (items.length / n).ceil(); j++) {
             var rowChildren = List<Widget>.empty(growable: true);
-            //
             for (int i = j * n; i < (j + 1) * n; i++) {
-              if (i >= children!.length) break;
-              rowChildren.add(children![i]);
+              if (i >= items.length) break;
+              rowChildren.add(items[i]);
             }
             //
             rows.add(_BootstrapListItem(

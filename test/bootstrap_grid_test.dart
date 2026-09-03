@@ -94,4 +94,30 @@ void main() {
     await expectSegments(1300, 3); // xl
     await expectSegments(1800, 3); // xxl falls back to xl
   });
+
+  testWidgets('renders nothing when BootstrapList children are null or empty',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      const Directionality(
+        textDirection: TextDirection.ltr,
+        child: BootstrapList(
+          desiredItemWidth: 100,
+          minSpacing: 10,
+        ),
+      ),
+    );
+    expect(find.byType(SizedBox), findsOneWidget);
+
+    await tester.pumpWidget(
+      const Directionality(
+        textDirection: TextDirection.ltr,
+        child: BootstrapList(
+          desiredItemWidth: 100,
+          minSpacing: 10,
+          children: <Widget>[],
+        ),
+      ),
+    );
+    expect(find.byType(SizedBox), findsOneWidget);
+  });
 }

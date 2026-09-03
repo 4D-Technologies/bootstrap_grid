@@ -6,6 +6,7 @@
 - Use local Bootstrap width breakpoints (576, 768, 992, 1200, 1600).
 - Document the grid tiers in the README.
 - Add widget tests for breakpoint selection and column-span fallback.
+- Guard `BootstrapList` against null or empty `children`.
 
 ## [1.0.5] - Dec 10th, 2024
 

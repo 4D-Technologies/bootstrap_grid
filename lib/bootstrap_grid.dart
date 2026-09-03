@@ -1,4 +1,4 @@
-library;
+library bootstrap_grid;
 
 import 'package:flutter/widgets.dart';
 
