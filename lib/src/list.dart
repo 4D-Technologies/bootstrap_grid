@@ -1,4 +1,4 @@
-part of bootstrap_grid;
+part of '../bootstrap_grid.dart';
 
 class BootstrapList extends StatelessWidget {
   final double? desiredItemWidth, minSpacing;
@@ -6,8 +6,9 @@ class BootstrapList extends StatelessWidget {
   final bool squareCells, scroll;
   final MainAxisAlignment rowMainAxisAlignment;
 
-  BootstrapList(
-      {this.desiredItemWidth,
+  const BootstrapList(
+      {super.key,
+      this.desiredItemWidth,
       this.minSpacing,
       this.squareCells = false,
       this.scroll = true,
@@ -18,7 +19,10 @@ class BootstrapList extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (children!.length == 0) return Container();
+        final List<Widget>? items = children;
+        if (items == null || items.isEmpty) {
+          return const SizedBox.shrink();
+        }
 
         double width = constraints.maxWidth;
 
@@ -46,24 +50,21 @@ class BootstrapList extends StatelessWidget {
 
         if (scroll) {
           return ListView.builder(
-              itemCount: (children!.length / n).ceil() * 2 - 1,
+              itemCount: (items.length / n).ceil() * 2 - 1,
               itemBuilder: (context, index) {
-                //if (index * n >= children.length) return null;
-                //separator
                 if (index % 2 == 1) {
                   return SizedBox(
                     height: minSpacing,
                   );
                 }
-                //item
                 var rowChildren = List<Widget>.empty(growable: true);
                 index = index ~/ 2;
                 for (int i = index * n; i < (index + 1) * n; i++) {
-                  if (i >= children!.length) break;
-                  rowChildren.add(children![i]);
+                  if (i >= items.length) break;
+                  rowChildren.add(items[i]);
                 }
                 return _BootstrapListItem(
-                  mainAxisAlignment: this.rowMainAxisAlignment,
+                  mainAxisAlignment: rowMainAxisAlignment,
                   itemWidth: itemWidth,
                   spacing: spacing,
                   squareCells: squareCells,
@@ -75,17 +76,15 @@ class BootstrapList extends StatelessWidget {
           rows.add(SizedBox(
             height: minSpacing,
           ));
-          //
-          for (int j = 0; j < (children!.length / n).ceil(); j++) {
+          for (int j = 0; j < (items.length / n).ceil(); j++) {
             var rowChildren = List<Widget>.empty(growable: true);
-            //
             for (int i = j * n; i < (j + 1) * n; i++) {
-              if (i >= children!.length) break;
-              rowChildren.add(children![i]);
+              if (i >= items.length) break;
+              rowChildren.add(items[i]);
             }
             //
             rows.add(_BootstrapListItem(
-              mainAxisAlignment: this.rowMainAxisAlignment,
+              mainAxisAlignment: rowMainAxisAlignment,
               itemWidth: itemWidth,
               spacing: spacing,
               squareCells: squareCells,
@@ -112,20 +111,20 @@ class _BootstrapListItem extends StatelessWidget {
   final bool? squareCells;
   final MainAxisAlignment mainAxisAlignment;
 
-  _BootstrapListItem(
+  const _BootstrapListItem(
       {this.itemWidth,
       this.spacing,
       this.squareCells,
       double? itemHeight,
       this.children,
       this.mainAxisAlignment = MainAxisAlignment.start})
-      : this.itemHeight = itemHeight ?? itemWidth;
+      : itemHeight = itemHeight ?? itemWidth;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: this.mainAxisAlignment,
+      mainAxisAlignment: mainAxisAlignment,
       children: _buildChildren(),
     );
   }
@@ -137,7 +136,7 @@ class _BootstrapListItem extends StatelessWidget {
       width: spacing,
     ));
 
-    children!.forEach((child) {
+    for (var child in children!) {
       list.add(SizedBox(
         width: itemWidth,
         height: squareCells! ? itemWidth : itemHeight,
@@ -146,7 +145,7 @@ class _BootstrapListItem extends StatelessWidget {
       list.add(SizedBox(
         width: spacing,
       ));
-    });
+    }
 
     return list;
   }
